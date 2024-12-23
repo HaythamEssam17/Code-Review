@@ -48,3 +48,43 @@ Finally, We can add some general tips and suggestions for improvement:
  - Separate the controller to smaller functions and classes
  - Review all existing functions and rewrite them in a way that suits clean code and apply clean arch principles
  - Add comments to the code to make it easier to understand
+
+ /********************************************
+ Notes on Clean Architecture Principles:
+   - The controller should be separated from the UI and business logic
+   - The controller should be separated from the entities
+   - The controller should be separated from the repositories / interfaces
+   - The controller should be separated from the use cases
+   - The controller should be separated from the data sources / data sources impl
+   - The controller should be separated from the endpoints
+   - The controller should be separated from the cache functions   
+ *******************************************/
+
+
+ * Clean Architecture Principles Refactor:
+ to implement clean arch principles, we need to make some changes: 
+ - Create a new feature called Streaks contains: 
+   * Domain folder contains: 
+     - entities folder contains: 
+       - streak_entity.dart
+     - repositories folder contains: 
+       - streak_repository.dart (Abstract class) (Returns CustomError and  the Entities)
+     - usecases folder contains: 
+       - streak_usecase.dart (Includes Dependency Injection of streak_repository.dart)
+   * Data folder contains:
+       - datasources folder contains: (It contains any Remote Api Calling and Local Storage)
+          - streak_datasource.dart (Returns CustomError and a BaseModel defined allover the application)
+          - streak_datasource_impl.dart (Implements streak_datasource.dart Functions)
+       - models folder contains: 
+          - streak_model.dart ()
+       - repositories folder contains: 
+          - streak_repository_impl.dart (Implements streak_repository.dart) (Make any casting on the data before passing it to usecase)
+   * Presentation folder contains:
+       - controllers (State Management) folder contains: 
+          - streak_controller.dart (Includes Injection of usecases defined in Domain Layer)
+         - pages folder contains:
+            - streak_page.dart
+       - widgets folder contains: 
+          - image_share_widget.dart
+
+   - Create a new feature called Cache contains:
