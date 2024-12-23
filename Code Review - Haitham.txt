@@ -1,0 +1,50 @@
+
+1- This controller is too big and you must split it to smaller functions and classes.
+-----------------------------------------------------------------------------------------------
+2- There are many imports in this file.
+   These imports can be replaced and exported in another file, and this file will be imported here.
+   This will make the code cleaner and more readable.
+   The imports can be exported in a file called 'streak_imports.dart' and imported here.
+-----------------------------------------------------------------------------------------------
+
+3- It is best to create a file for fixed / static values ​​in the application.
+   This file can be called 'app_constants.dart' and all fixed values ​​in the application can be added to it.
+   This will make the code cleaner and more readable.
+-----------------------------------------------------------------------------------------------
+4- There is a security issue and should be fixed (_lastSyncedHashStreaksKey && downloadUrl).
+   It is wrong to pass any keys or endpoints directly inside the code.
+   It is best to create a file for all endpoints in the application.
+   The right way is to create a '.env' file and add these keys in it.
+   - String get downloadUrl => 'https://api/download'.
+   The '.env' file should be read in the main.dart file and the keys should be passed to the controllers or services that need them.
+   The .env file should be added to .gitignore file to avoid pushing it to the repository.
+-----------------------------------------------------------------------------------------------
+5- We noticed that the translation is not working properly, we need to check the translation file and make sure that the translation is correct.
+   You can create a file called 'app_translations.dart' and add all translation strings to it.
+-----------------------------------------------------------------------------------------------
+6- The _calcStreaks function is too long and contains many variables and calculations.
+   It is best to split this function into smaller functions and group them in a separate file.
+-----------------------------------------------------------------------------------------------
+7- It is best to create a file contains all shared functions.
+   This file can be called 'shared_functions.dart' and all shared functions can be added to it.
+   The shared functions can be added to it and imported in the files that need them.
+   It will be easier to maintain and update these functions and make the controller easier and readable.
+-----------------------------------------------------------------------------------------------
+8- BorderRadiusGeometry && Colors && DateTime.
+   It is best to create an Extensions file and add all extensions to it.
+-----------------------------------------------------------------------------------------------
+9- The share function can be added to the separated 'shared_functions.dart' file.
+-----------------------------------------------------------------------------------------------
+10- The imageShare widget must be added to a separate file.
+    We can create a new statless widget called 'ImageShareWidget' and pass the params to it.
+-----------------------------------------------------------------------------------------------
+11- _deleteCachedFile() && clear() functions can be added to the cache service.
+    It is best to create a file called 'cache_service.dart' and add all cache functions to it.
+-----------------------------------------------------------------------------------------------
+
+Finally, We can add some general tips and suggestions for improvement: 
+ - Add unit tests
+ - Separate the UI from the business logic
+ - Separate the controller to smaller functions and classes
+ - Review all existing functions and rewrite them in a way that suits clean code and apply clean arch principles
+ - Add comments to the code to make it easier to understand
